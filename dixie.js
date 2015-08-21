@@ -127,10 +127,7 @@ function memset(ptr, ptr_off, value, num) {
 //}
 
 function malloc(size,value) {
-  var i;
-  var output = new Array(); for (i = 0; i < size; ++i) output.push(value);
-  return output
-  //return size
+  Arr(size, value);
 }
 
 function assert(bCondition) {
@@ -164,19 +161,19 @@ function offsetof(val1,val2) {
 
 function Arr(len,val) {
 	var i;
-	var result = new Array(); for (i = 0; i < len; ++i) result.push(val);
+	var result = new Array(len); for (i = 0; i < len; ++i) result[i]=val;
 	return result;
 }
 
 function Arr_new(len,val) {
 	var i;
-	var result = new Array(); for (i = 0; i < len; ++i) result.push(new val);
+	var result = new Array(len); for (i = 0; i < len; ++i) result[i] = new val;
 	return result;
 }
 
 function Arr_nOI(len,val) {
 	var i;
-	var result = new Array(); for (i = 0; i < len; ++i) result.push(newObjectIt(val));
+	var result = new Array(len); for (i = 0; i < len; ++i) result[i] = newObjectIt(val));
 	return result;
 }
 
@@ -7355,8 +7352,7 @@ vp8_dixie_decode_frame(ctx,
     ctx.error.error_code = VPX_CODEC_OK;
     ctx.error.has_detail = 0;
 
-    if (!setjmp(ctx.error.jmp))
-        decode_frame(ctx, data, 0, sz);
+    decode_frame(ctx, data, 0, sz);
 
     return ctx_.error.error_code;
 }
